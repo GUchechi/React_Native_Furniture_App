@@ -1,11 +1,11 @@
-import { StyleSheet, Text, safeAreaView } from 'react-native'
+import { StyleSheet, Text, SafeAreaView } from 'react-native'
 import React from 'react'
 
 const Search = () => {
   return (
-    <safeAreaView>
+    <SafeAreaView>
       <Text>Search</Text>
-    </safeAreaView>
+    </SafeAreaView>
   )
 }
 
