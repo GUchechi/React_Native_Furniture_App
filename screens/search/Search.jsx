@@ -1,7 +1,8 @@
 import React from "react";
-import { StyleSheet, Text,TextInput, View,TouchableOpacity, SafeAreaView } from "react-native";
+import {  Text,TextInput, View,TouchableOpacity, SafeAreaView } from "react-native";
 import { Feather, Ionicons } from "@expo/vector-icons";
-import { COLORS, SIZES } from "../constants";
+import { COLORS, SIZES } from "../../constants";
+import styles from './Search.style'
 
 const Search = () => {
   return (
@@ -37,4 +38,4 @@ const Search = () => {
 
 export default Search;
 
-const styles = StyleSheet.create({});
+

@@ -1,4 +1,4 @@
-import Search from "./Search";
+import Search from "../screens/search/Search";
 import Home from "./Home";
 import Profile from "./Profile";
 
