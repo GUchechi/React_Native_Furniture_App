@@ -1,31 +1,35 @@
 import React from "react";
-import {  Text,TextInput, View,TouchableOpacity, SafeAreaView } from "react-native";
+import {
+  Text,
+  TextInput,
+  View,
+  TouchableOpacity,
+  SafeAreaView,
+} from "react-native";
 import { Feather, Ionicons } from "@expo/vector-icons";
 import { COLORS, SIZES } from "../../constants";
-import styles from './Search.style'
+import styles from "./Search.style";
 
 const Search = () => {
   return (
     <SafeAreaView>
       <View style={styles.searchContainer}>
         <TouchableOpacity>
-          <Feather name="search" size={24} style={styles.searchIcon} />
+          <Ionicons name="camera-outline" size={24} style={styles.searchIcon} />
         </TouchableOpacity>
         <View style={styles.searchWrapper}>
           <TextInput
             style={styles.searchInput}
             value=""
-            onPressIn={() => {
-              navigation.navigate("Search");
-            }}
+            onPressIn={() => {}}
             placeholder="What are you looking for?"
           />
         </View>
 
         <View>
           <TouchableOpacity style={styles.searchBtn}>
-            <Ionicons
-              name="camera-outline"
+            <Feather
+              name="search"
               size={SIZES.xLarge}
               color={COLORS.offwhite}
             />
@@ -37,5 +41,3 @@ const Search = () => {
 };
 
 export default Search;
-
-
