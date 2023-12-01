@@ -7,6 +7,7 @@ import { ScrollView } from "react-native";
 import { Welcome } from "../components";
 import Carousel from "../components/home/Carousel";
 import Headings from "../components/home/Headings/Headings";
+import ProductRow from "../components/products/ProductRow";
 
 const Home = () => {
   return (
@@ -34,6 +35,7 @@ const Home = () => {
         <Welcome />
         <Carousel />
         <Headings />
+        <ProductRow />
       </ScrollView>
     </SafeAreaView>
   );
