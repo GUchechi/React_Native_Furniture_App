@@ -7,9 +7,10 @@ const styles = StyleSheet.create({
   },
   welcomeText: (color, top) => ({
     fontFamily: "bold",
-    fontSize: SIZES.xxLarge - 5,
+    fontSize: SIZES.xxLarge - 7,
     marginTop: top,
     color: color,
+    marginHorizontal: 15,
   }),
   searchContainer: {
     flexDirection: "row",

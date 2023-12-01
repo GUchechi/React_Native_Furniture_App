@@ -6,6 +6,7 @@ import styles from "./home.style";
 import { ScrollView } from "react-native";
 import { Welcome } from "../components";
 import Carousel from "../components/home/Carousel";
+import Headings from "../components/home/Headings/Headings";
 
 const Home = () => {
   return (
@@ -32,6 +33,7 @@ const Home = () => {
       <ScrollView>
         <Welcome />
         <Carousel />
+        <Headings />
       </ScrollView>
     </SafeAreaView>
   );

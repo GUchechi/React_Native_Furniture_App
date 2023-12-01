@@ -11,7 +11,7 @@ export default function Welcome() {
   return (
     <View>
       <View style={styles.container}>
-        <Text style={styles.welcomeText(COLORS.black, SIZES.xsmall)}>
+        <Text style={styles.welcomeText(COLORS.black, SIZES.xSmall)}>
           Find The Most
         </Text>
         <Text style={styles.welcomeText(COLORS.primary, 0)}>
