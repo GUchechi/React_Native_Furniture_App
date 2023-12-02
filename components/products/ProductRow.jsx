@@ -7,15 +7,15 @@ import { View } from "react-native";
 import ProductViewCard from "./ProductViewCard";
 
 export default function ProductRow() {
-  const products = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+  const products = [1, 2, 3, 4, 5, 6, 7, 8];
 
   return (
-    <View style={{ marginTop: SIZES.medium }}>
+    <View style={{ marginTop: 5}}>
       <FlatList
         data={products}
         renderItem={({ item }) => <ProductViewCard />}
         horizontal
-        contentContainerStyle={{ columnGap: SIZES.medium }}
+        contentContainerStyle={{ columnGap: 1 }}
       />
     </View>
   );
