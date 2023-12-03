@@ -1,6 +1,8 @@
 import React from "react";
 import { StyleSheet, Text, View, TouchableOpacity, Image } from "react-native";
+import {Ionicons} from '@expo/vector-icons'
 import styles from "./ProductViewCard.styles";
+import { Ionicons } from "@expo/vector-icons";
 
 const ProductViewCard = () => {
   return (
@@ -24,6 +26,10 @@ const ProductViewCard = () => {
           </Text>
           <Text style={styles.price}> $2352</Text>
         </View>
+
+        <TouchableOpacity style={styles.addBtn}>
+          <Ionicons name="add-circle"/>
+        </TouchableOpacity>
       </View>
     </TouchableOpacity>
   );
