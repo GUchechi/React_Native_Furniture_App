@@ -1,8 +1,8 @@
 import React from "react";
 import { StyleSheet, Text, View, TouchableOpacity, Image } from "react-native";
-import {Ionicons} from '@expo/vector-icons'
-import styles from "./ProductViewCard.styles";
 import { Ionicons } from "@expo/vector-icons";
+import styles from "./ProductViewCard.styles";
+import { COLORS } from "../../constants";
 
 const ProductViewCard = () => {
   return (
@@ -28,7 +28,7 @@ const ProductViewCard = () => {
         </View>
 
         <TouchableOpacity style={styles.addBtn}>
-          <Ionicons name="add-circle"/>
+          <Ionicons name="add-circle" size={35} color={COLORS.primary} />
         </TouchableOpacity>
       </View>
     </TouchableOpacity>
