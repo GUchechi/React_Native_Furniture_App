@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
     flex: 1,
     width: 170,
     marginLeft: SIZES.small / 2,
-    // marginTop: SIZES.small / 2,
+    marginTop: SIZES.small / 2,
     borderRadius: SIZES.small,
     overflow: "hidden",
   },
@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
     resizeMode: "cover",
   },
   details: {
-    padding: SIZES.small,
+    padding: 5,
   },
   title: {
     fontFamily: "bold",
@@ -32,15 +32,17 @@ const styles = StyleSheet.create({
   supplier: {
     fontFamily: "regular",
     fontSize: SIZES.small,
-   color: COLORS.gray,
+    color: COLORS.gray,
   },
   price: {
     fontFamily: "bold",
     fontSize: SIZES.medium,
   },
   addBtn: {
-    
-  }
+    position: "absolute",
+    bottom: SIZES.xSmall,
+    right: SIZES.xSmall,
+  },
 });
 
 export default styles;

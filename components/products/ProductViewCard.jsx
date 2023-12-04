@@ -1,12 +1,18 @@
 import React from "react";
+import { useNavigation } from "@react-navigation/native";
 import { StyleSheet, Text, View, TouchableOpacity, Image } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import styles from "./ProductViewCard.styles";
 import { COLORS } from "../../constants";
 
 const ProductViewCard = () => {
+  const navigation = useNavigation();
   return (
-    <TouchableOpacity onPress={() => {}}>
+    <TouchableOpacity
+      onPress={() => {
+        navigation.navigate("ProductDetail");
+      }}
+    >
       <View style={styles.container}>
         <View style={styles.imageContainer}>
           <Image
