@@ -5,19 +5,19 @@ import { Ionicons } from "@expo/vector-icons";
 import styles from "./ProductViewCard.styles";
 import { COLORS } from "../../constants";
 
-const ProductViewCard = () => {
+const ProductViewCard = ({ item }) => {
   const navigation = useNavigation();
   return (
     <TouchableOpacity
       onPress={() => {
-        navigation.navigate("ProductDetail");
+        navigation.navigate("ProductDetail", {item});
       }}
     >
       <View style={styles.container}>
         <View style={styles.imageContainer}>
           <Image
             source={{
-              uri: "https://img.freepik.com/free-photo/modern-residential-district-with-green-roof-balcony-generated-by-ai_188544-10276.jpg?size=626&ext=jpg&ga=GA1.1.2080039577.1701705974&semt=ais",
+              uri: item.imageUrl,
             }}
             style={styles.image}
           />
@@ -25,12 +25,12 @@ const ProductViewCard = () => {
 
         <View style={styles.details}>
           <Text style={styles.title} numberOfLines={1}>
-            Products
+            {item.title}
           </Text>
           <Text style={styles.supplier} numberOfLines={1}>
-            Products
+            {item.supplier}
           </Text>
-          <Text style={styles.price}> $2352</Text>
+          <Text style={styles.price}> ${item.price}</Text>
         </View>
 
         <TouchableOpacity style={styles.addBtn}>

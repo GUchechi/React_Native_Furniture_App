@@ -1,4 +1,5 @@
 import { React, useState } from "react";
+import { useRoute } from "@react-navigation/native";
 import { StyleSheet, Text, View, Image } from "react-native";
 import { COLORS, SIZES } from "../constants";
 import { TouchableOpacity } from "react-native";
@@ -10,6 +11,9 @@ import {
 } from "@expo/vector-icons";
 
 const ProductDetail = ({ navigation }) => {
+  const route = useRoute();
+  const { item } = route.params;
+
   const [count, setCount] = useState(1);
 
   const increment = () => {
@@ -40,16 +44,16 @@ const ProductDetail = ({ navigation }) => {
 
       <Image
         source={{
-          uri: "https://img.freepik.com/free-photo/modern-residential-district-with-green-roof-balcony-generated-by-ai_188544-10276.jpg?size=626&ext=jpg&ga=GA1.1.2080039577.1701705974&semt=ais",
+          uri: item.imageUrl,
         }}
         style={styles.image}
       />
 
       <View style={styles.details}>
         <View style={styles.titleRow}>
-          <Text style={styles.title}>Testing</Text>
+          <Text style={styles.title}>{item.title}</Text>
           <View style={styles.priceWrapper}>
-            <Text style={styles.price}>$660.00</Text>
+            <Text style={styles.price}>${item.price}</Text>
           </View>
         </View>
 
@@ -85,28 +89,19 @@ const ProductDetail = ({ navigation }) => {
 
         <View style={styles.descriptionWrapper}>
           <Text style={styles.description}>Description</Text>
-          <Text style={styles.descText}>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s, when an unknown printer took a galley of type
-            and scrambled it to make a type specimen book. Lorem Ipsum is simply
-            dummy text of the printing and typesetting industry. Lorem Ipsum has
-            been the industry's standard dummy text ever since the 1500s, when
-            an unknown printer took a galley of type and scrambled it to make a
-            type specimen book.
-          </Text>
+          <Text style={styles.descText}>{item.description}</Text>
         </View>
 
         <View style={{ marginBottom: SIZES.small, paddingHorizontal: 10 }}>
           <View style={styles.location}>
             <View style={{ flexDirection: "row" }}>
               <Ionicons name="location-outline" size={20} />
-              <Text>Dallas</Text>
+              <Text> {item.product_location}</Text>
             </View>
 
             <View style={{ flexDirection: "row" }}>
               <MaterialCommunityIcons name="truck-delivery-outline" size={20} />
-              <Text>Free Delivery</Text>
+              <Text>  Free Delivery</Text>
             </View>
           </View>
         </View>
@@ -229,7 +224,7 @@ const styles = StyleSheet.create({
   cartBtn: {
     width: SIZES.width * 0.8,
     backgroundColor: COLORS.black,
-    padding: SIZES.small/2,
+    padding: SIZES.small / 2,
     borderRadius: SIZES.large,
     marginLeft: 12,
   },
@@ -237,7 +232,7 @@ const styles = StyleSheet.create({
     fontFamily: "semiBold",
     fontSize: SIZES.medium,
     color: COLORS.lightWhite,
-    marginLeft: SIZES.small
+    marginLeft: SIZES.small,
   },
   addCart: {
     width: 37,
