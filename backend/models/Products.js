@@ -10,6 +10,10 @@ const ProductSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    price: {
+      type: String,
+      required: true,
+    },
     imageUrl: {
       type: String,
       required: true,
@@ -18,7 +22,7 @@ const ProductSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    product_locatin: {
+    product_location: { 
       type: String,
       required: true,
     },
@@ -26,4 +30,4 @@ const ProductSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-module.export = module.model("Product", ProductSchema);
+module.exports = mongoose.model("Product", ProductSchema);
