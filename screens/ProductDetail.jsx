@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, Image } from "react-native";
 import { COLORS, SIZES } from "../constants";
 import { TouchableOpacity } from "react-native";
 import {
+  Fontisto,
   Ionicons,
   MaterialCommunityIcons,
   SimpleLineIcons,
@@ -116,7 +117,7 @@ const ProductDetail = ({ navigation }) => {
           </TouchableOpacity>
 
           <TouchableOpacity style={styles.addCart} onPress={() => {}}>
-            <Text style={styles.cartTitle}>Buy Now</Text>
+            <Fontisto name="shopping-bag" size={15} color={COLORS.lightWhite} />
           </TouchableOpacity>
         </View>
       </View>
@@ -223,19 +224,28 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    width: SIZES.width - 44,
+    width: SIZES.width,
   },
   cartBtn: {
-    width: SIZES.width * 0.7,
+    width: SIZES.width * 0.8,
     backgroundColor: COLORS.black,
-    padding: SIZES.small,
+    padding: SIZES.small/2,
     borderRadius: SIZES.large,
     marginLeft: 12,
   },
   cartTitle: {
-    fontFamily: "semibold",
+    fontFamily: "semiBold",
     fontSize: SIZES.medium,
     color: COLORS.lightWhite,
+    marginLeft: SIZES.small
   },
-  
+  addCart: {
+    width: 37,
+    height: 37,
+    borderRadius: 50,
+    margin: SIZES.small,
+    backgroundColor: COLORS.black,
+    justifyContent: "center",
+    alignItems: "center",
+  },
 });
