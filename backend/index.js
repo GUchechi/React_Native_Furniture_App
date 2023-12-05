@@ -13,6 +13,6 @@ mongoose
   .then(() => console.log("db connected"))
   .catch((err) => {
     console.log(err);
-  }); 
+  });
 app.get("/", (req, res) => res.send("Hello World!"));
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
