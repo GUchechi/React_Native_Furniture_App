@@ -10,12 +10,12 @@ export default function ProductRow() {
   const products = [1, 2, 3, 4, 5, 6, 7, 8];
 
   return (
-    <View style={{ marginTop: 5}}>
+    <View style={{ marginTop: 5, marginLeft: 12}}>
       <FlatList
         data={products}
         renderItem={({ item }) => <ProductViewCard />}
         horizontal
-        contentContainerStyle={{ columnGap: 1 }}
+        contentContainerStyle={{ columnGap: -10 }}
       />
     </View>
   );
