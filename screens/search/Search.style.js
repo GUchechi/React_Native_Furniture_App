@@ -37,6 +37,12 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.primary,
     borderRadius: SIZES.medium,
   },
+  searchImage: {
+    resizeMode: "contain",
+    width: SIZES.width -60,
+    height: SIZES.height - 200,
+    // opacity: 0.9,
+  },
 });
 
 export default styles;

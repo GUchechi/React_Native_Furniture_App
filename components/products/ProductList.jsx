@@ -4,6 +4,7 @@ import useFetch from "../../hooks/useFetch";
 import styles from "./ProductList.style";
 import { FlatList } from "react-native";
 import ProductViewCard from "./ProductViewCard";
+import { COLORS } from "../../constants";
 
 export default function ProductList() {
   const { data, isLoading, error } = useFetch();
@@ -13,7 +14,12 @@ export default function ProductList() {
       <View style={styles.loadingContainer}>
         <Image
           source={require("../../assets/load.gif")}
-          style={{ width: 200, height: 200, resizeMode: "contain" }}
+          style={{
+            width: 200,
+            height: 200,
+            resizeMode: "contain",
+            backgroundColor: "#fff",
+          }}
         />
       </View>
     );
