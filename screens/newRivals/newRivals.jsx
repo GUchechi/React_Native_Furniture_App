@@ -4,8 +4,9 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import styles from "./newRival.style";
 import { Ionicons } from "@expo/vector-icons";
 import { COLORS } from "../../constants";
+import ProductList from "../../components/products/ProductList";
 
-export default function NewRivals({navigation}) {
+export default function NewRivals({ navigation }) {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.wrapper}>
@@ -15,11 +16,16 @@ export default function NewRivals({navigation}) {
               navigation.goBack();
             }}
           >
-            <Ionicons name="chevron-back-circle" size={30} color={COLORS.lightWhite}/>
+            <Ionicons
+              name="chevron-back-circle"
+              size={30}
+              color={COLORS.lightWhite}
+            />
           </TouchableOpacity>
 
           <Text style={styles.heading}>Products</Text>
         </View>
+        <ProductList />
       </View>
     </SafeAreaView>
   );
