@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
   },
   searchImage: {
     resizeMode: "contain",
-    width: SIZES.width -60,
+    width: SIZES.width - 60,
     height: SIZES.height - 200,
     // opacity: 0.9,
   },
