@@ -101,7 +101,7 @@ module.exports = {
     const cartItemId = req.params.cartItemId;
 
     try {
-      const updatedCart = await Cart.findOneAndDelete(
+      const updatedCart = await Cart.findOneAndUpdate(
         { "products._id": cartItemId },
         { $pull: { products: { _id: cartItemId } } },
         { new: true }
