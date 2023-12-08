@@ -2,7 +2,6 @@ const Product = require("../models/Products");
 const Cart = require("../models/Cart");
 
 module.exports = {
-
   // Add to Cart
   addToCart: async (req, res) => {
     const { userId, cartItem, quantity } = req.body;
@@ -43,7 +42,20 @@ module.exports = {
   },
 
   // Get Cart
-  getCart: async (req, res) => {},
+  getCart: async (req, res) => {
+    const userId = req.params.id;
+
+    try {
+      const cart = await Cart.find({ userId }).populate(
+        "products.cartItem",
+        "_id title supplier price imageUrl"
+      );
+
+      res.status(200).json(cart);
+    } catch (error) {
+      res.status(500).json(error);
+    }
+  },
 
   decrementCartItem: async (req, res) => {},
 
