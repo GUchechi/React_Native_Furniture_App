@@ -41,7 +41,7 @@ module.exports = {
     }
   },
 
-  // Get Cart
+  // Get Cart Item
   getCart: async (req, res) => {
     const userId = req.params.id;
 
@@ -57,7 +57,7 @@ module.exports = {
     }
   },
 
-  // Decrement Item
+  // Decrement Cart Item
   decrementCartItem: async (req, res) => {
     const { userId, cartItem } = req.body;
 
@@ -87,10 +87,7 @@ module.exports = {
       await cart.save();
 
       if (existingProduct.quantity === 0) {
-        await Cart.updatedOne(
-          { userId },
-          { $pull: { products: { cartItem } } }
-        );
+        await Cart.updateOne({ userId }, { $pull: { products: { cartItem } } });
       }
 
       res.status(200).json("Product Updated");
@@ -99,5 +96,24 @@ module.exports = {
     }
   },
 
-  deleteCartItem: async (req, res) => {},
+  // Delete Cart Item
+  deleteCartItem: async (req, res) => {
+    const cartItemId = req.params.cartItemId;
+
+    try {
+      const updatedCart = await Cart.findOneAndDelete(
+        { "products._id": cartItemId },
+        { $pull: { products: { _id: cartItemId } } },
+        { new: true }
+      );
+
+      if (!updatedCart) {
+        return res.status(404).json("Cart not found");
+      }
+
+      res.status(200).json(updatedCart);
+    } catch (error) {
+      res.status(500).json(error);
+    }
+  },
 };
