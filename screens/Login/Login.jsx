@@ -1,12 +1,31 @@
-import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import React, { useState } from "react";
+import {
+  StyleSheet,
+  ScrollView,
+  TouchableOpacity,
+  Text,
+  View,
+  SafeAreaView,
+} from "react-native";
 import styles from "./Login.styles";
 
-const Login = () => {
+const Login = ({ navigation }) => {
+  const [loader, setLoader] = useState(false);
+  const [responseData, setResponseData] = useState(null);
+  const [input, setInput] = useState({
+    email: "",
+    password: "",
+  });
+  const [error, setError] = useState(null);
+
   return (
-    <View>
-      <Text>Login</Text>
-    </View>
+    <ScrollView>
+      <SafeAreaView style={{marginHorizontal: 20}}>
+        <View>
+          
+        </View>
+      </SafeAreaView>
+    </ScrollView>
   );
 };
 

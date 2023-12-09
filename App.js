@@ -6,6 +6,8 @@ import * as SplashScreen from "expo-splash-screen";
 import BottomTabNavigation from "./navigation/BottomTabNavigation";
 import { Login, NewRivals, ProductDetail } from "./screens";
 import { Cart } from "./screens/index";
+import Orders from "./screens/Orders";
+import Favorites from "./screens/Favorites";
 
 const Stack = createNativeStackNavigator();
 export default function App() {
@@ -56,6 +58,18 @@ export default function App() {
         <Stack.Screen
           name="Login"
           component={Login}
+          options={{ headerShown: false }}
+        />
+
+        <Stack.Screen
+          name="Orders"
+          component={Orders}
+          options={{ headerShown: false }}
+        />
+
+        <Stack.Screen
+          name="Favorites"
+          component={Favorites}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>

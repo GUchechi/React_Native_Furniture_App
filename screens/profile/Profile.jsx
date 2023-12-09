@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, Image } from "react-native";
+import { View, Text, Image, Alert } from "react-native";
 import styles from "./Profile.style";
 import { StatusBar } from "expo-status-bar";
 import { COLORS } from "../../constants";
@@ -13,6 +13,37 @@ import {
 const Profile = ({ navigation }) => {
   const [userData, setUserData] = useState(null);
   const [userLogin, setUserLogin] = useState(false);
+
+  // Logout
+  const logout = () => {
+    Alert.alert("Logout", "Are you sure you want to logout?", [
+      { text: "Cancel", onPress: () => console.log("Cancel Press") },
+      { text: "Continue", onPress: () => console.log("Continue Press") },
+      { defaultIndex: 1 },
+    ]);
+  };
+
+  // Clear Cache
+  const clearCache = () => {
+    Alert.alert(
+      "Logout",
+      "Are you sure you want to delete all saved data on your device?",
+      [
+        { text: "Cancel", onPress: () => console.log("Cancel clear cache") },
+        { text: "Continue", onPress: () => console.log("Clear cache pressed") },
+        { defaultIndex: 1 },
+      ]
+    );
+  };
+
+  // Logout
+  const deleteAccount = () => {
+    Alert.alert("Logout", "Are you sure you want to delete your account?", [
+      { text: "Cancel", onPress: () => console.log("Cancel Press") },
+      { text: "Continue", onPress: () => console.log("Continue delete") },
+      { defaultIndex: 1 },
+    ]);
+  };
 
   return (
     <View style={styles.container}>
@@ -54,7 +85,11 @@ const Profile = ({ navigation }) => {
             <View></View>
           ) : (
             <View style={styles.menuWrapper}>
-              <TouchableOpacity onPress={() => {}}>
+              <TouchableOpacity
+                onPress={() => {
+                  navigation.navigate("Favorites");
+                }}
+              >
                 <View style={styles.menuItem(0.5)}>
                   <MaterialCommunityIcons
                     name="heart-outline"
@@ -65,7 +100,11 @@ const Profile = ({ navigation }) => {
                 </View>
               </TouchableOpacity>
 
-              <TouchableOpacity onPress={() => {}}>
+              <TouchableOpacity
+                onPress={() => {
+                  navigation.navigate("Orders");
+                }}
+              >
                 <View style={styles.menuItem(0.5)}>
                   <MaterialCommunityIcons
                     name="truck-delivery-outline"
@@ -76,7 +115,11 @@ const Profile = ({ navigation }) => {
                 </View>
               </TouchableOpacity>
 
-              <TouchableOpacity onPress={() => {}}>
+              <TouchableOpacity
+                onPress={() => {
+                  navigation.navigate("Cart");
+                }}
+              >
                 <View style={styles.menuItem(0.5)}>
                   <SimpleLineIcons
                     name="bag"
@@ -87,7 +130,11 @@ const Profile = ({ navigation }) => {
                 </View>
               </TouchableOpacity>
 
-              <TouchableOpacity onPress={() => {}}>
+              <TouchableOpacity
+                onPress={() => {
+                  clearCache();
+                }}
+              >
                 <View style={styles.menuItem(0.5)}>
                   <MaterialCommunityIcons
                     name="cached"
@@ -98,7 +145,11 @@ const Profile = ({ navigation }) => {
                 </View>
               </TouchableOpacity>
 
-              <TouchableOpacity onPress={() => {}}>
+              <TouchableOpacity
+                onPress={() => {
+                  deleteAccount();
+                }}
+              >
                 <View style={styles.menuItem(0.5)}>
                   <AntDesign
                     name="deleteuser"
@@ -109,7 +160,11 @@ const Profile = ({ navigation }) => {
                 </View>
               </TouchableOpacity>
 
-              <TouchableOpacity onPress={() => {}}>
+              <TouchableOpacity
+                onPress={() => {
+                  logout();
+                }}
+              >
                 <View style={styles.menuItem(0.5)}>
                   <AntDesign name="logout" size={24} color={COLORS.primary} />
                   <Text style={styles.menuText}>Logout</Text>
