@@ -47,8 +47,8 @@ const Profile = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
+        {/* <StatusBar backgroundColor={COLORS.gray} /> */}
       <View style={styles.container}>
-        <StatusBar backgroundColor={COLORS.gray} />
 
         <View style={{ width: "100%" }}>
           <Image
