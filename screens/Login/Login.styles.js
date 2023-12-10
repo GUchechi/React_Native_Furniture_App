@@ -3,7 +3,7 @@ import { COLORS, SIZES } from "../../constants";
 
 const styles = StyleSheet.create({
   cover: {
-    height: SIZES.height / 2.4,
+    height: SIZES.height/2.4,
     width: SIZES.width - 60,
     resizeMode: "contain",
     marginBottom: SIZES.xxLarge,
@@ -47,6 +47,14 @@ const styles = StyleSheet.create({
     marginTop: 5,
     marginLeft: 5,
     fontSize: SIZES.xSmall,
+  },
+  registration: {
+    // marginTop: 10,
+    textAlign: "center",
+    fontFamily: "bold",
+    fontSize: 20,
+    color: "grey",
+    fontStyle: "italic",
   },
 });
 

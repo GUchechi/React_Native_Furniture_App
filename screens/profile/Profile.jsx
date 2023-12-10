@@ -13,6 +13,7 @@ import {
 const Profile = ({ navigation }) => {
   const [userData, setUserData] = useState(null);
   const [userLogin, setUserLogin] = useState(false);
+  
 
   // Logout
   const logout = () => {

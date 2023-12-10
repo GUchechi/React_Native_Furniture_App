@@ -8,6 +8,7 @@ import {
   SafeAreaView,
   Image,
   TextInput,
+  Alert,
 } from "react-native";
 import { Formik } from "formik";
 import * as Yup from "yup";
@@ -31,6 +32,13 @@ const Login = ({ navigation }) => {
   const [loader, setLoader] = useState(false);
   const [responseData, setResponseData] = useState(null);
   const [obsecureText, setObsecureText] = useState(false);
+
+  const inValidForm = () => {
+    Alert.alert("Invalid Form", "Please provide all required fields", [
+      { text: "Cancel", onPress: () => {} },
+      { text: "Continue", onPress: () => {} },
+    ]);
+  };
 
   return (
     <ScrollView>
@@ -68,7 +76,7 @@ const Login = ({ navigation }) => {
                   <Text style={styles.label}>Email</Text>
                   <View
                     style={styles.inputWrapper(
-                      touched.email ? "grey" : COLORS.offwhite
+                      touched.email ? COLORS.secondary : COLORS.offwhite
                     )}
                   >
                     <MaterialCommunityIcons
@@ -101,7 +109,7 @@ const Login = ({ navigation }) => {
                   <Text style={styles.label}>Password</Text>
                   <View
                     style={styles.inputWrapper(
-                      touched.email ? "grey" : COLORS.offwhite
+                      touched.password ? COLORS.secondary : COLORS.offwhite
                     )}
                   >
                     <MaterialCommunityIcons
@@ -112,6 +120,7 @@ const Login = ({ navigation }) => {
                     />
 
                     <TextInput
+                      secureTextEntry={obsecureText}
                       placeholder="Enter Password"
                       onFocus={() => {
                         setFieldTouched("password");
@@ -141,7 +150,15 @@ const Login = ({ navigation }) => {
                     <Text style={styles.errorMessage}>{errors.password}</Text>
                   )}
                 </View>
-                <Button title={"L O G I N"} onPress={() => {}} />
+                <Button
+                  title={"L O G I N"}
+                  onPress={isValid ? handleSubmit : inValidForm}
+                  isValid={isValid}
+                />
+
+                <Text style={styles.registration} onPress={() => {}}>
+                  Register
+                </Text>
               </View>
             )}
           </Formik>
