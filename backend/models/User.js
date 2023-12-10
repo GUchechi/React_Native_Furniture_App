@@ -17,7 +17,7 @@ const UserSchema = new mongoose.Schema(
     },
     location: {
       type: String,
-      default: "Abuja",
+      required: true,
     },
   },
   { timestamps: true }

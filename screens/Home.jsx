@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Text, View, TouchableOpacity } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Fontisto, Ionicons } from "@expo/vector-icons";
@@ -9,9 +9,32 @@ import Carousel from "../components/home/Carousel";
 import Headings from "../components/home/Headings/Headings";
 import ProductRow from "../components/products/ProductRow";
 import { useNavigation } from "@react-navigation/native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useState } from "react";
 
 const Home = () => {
+  const [userData, setUserData] = useState(null);
+  const [userLogin, setUserLogin] = useState(false);
   const navigation = useNavigation();
+
+  useEffect(() => {
+    checkExistingUser();
+  }, []);
+
+  const checkExistingUser = async () => {
+    const id = await AsyncStorage.getItem("id");
+    const userId = `user${JSON.parse(id)}`;
+
+    try {
+      const currentUser = await AsyncStorage.getItem(userId);
+      if (currentUser !== null) {
+        const parsedData = JSON.parse(currentUser);
+        setUserData(parsedData);
+        setUserLogin(true);
+      }
+    } catch (error) {}
+  };
+
   return (
     <SafeAreaView>
       <View style={styles.appBarWrapper}>
@@ -20,7 +43,9 @@ const Home = () => {
             <Ionicons name="location-outline" size={24} />
           </TouchableOpacity>
 
-          <Text style={styles.location}>Abuja Nigeria</Text>
+          <Text style={styles.location}>
+            {userData ? userData.location : "Abuja Nigeria"}
+          </Text>
 
           <View style={{ alignItems: "flex-end" }}>
             <View style={styles.cartCount}>
