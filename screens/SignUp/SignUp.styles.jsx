@@ -3,7 +3,7 @@ import { COLORS, SIZES } from "../../constants";
 
 const styles = StyleSheet.create({
   cover: {
-    height: SIZES.height / 3,
+    height: SIZES.height / 5,
     width: SIZES.width,
     resizeMode: "contain",
     marginBottom: SIZES.xxLarge,

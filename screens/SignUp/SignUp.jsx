@@ -12,13 +12,14 @@ import {
 } from "react-native";
 import { Formik } from "formik";
 import * as Yup from "yup";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
-import styles from "./Login.styles";
+import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
+import styles from "./SignUp.styles";
 import BackBtn from "../../components/BackBtn";
 import Button from "../../components/Button";
 import { COLORS } from "../../constants";
 
 const validationSchema = Yup.object().shape({
+  username: Yup.string().min(3, "Provide your Username").required("Required"),
   password: Yup.string()
     .min(8, "Must be at least 8 characters or less")
     .required("Required"),
@@ -26,9 +27,13 @@ const validationSchema = Yup.object().shape({
   email: Yup.string()
     .email("Provide a valid email address")
     .required("Required"),
+
+  location: Yup.string()
+    .min(3, "Provide a valid location address")
+    .required("Required"),
 });
 
-const Login = ({ navigation }) => {
+const SignUp = ({ navigation }) => {
   const [loader, setLoader] = useState(false);
   const [responseData, setResponseData] = useState(null);
   const [obsecureText, setObsecureText] = useState(false);
@@ -38,11 +43,6 @@ const Login = ({ navigation }) => {
       { text: "Cancel", onPress: () => {} },
       { text: "Continue", onPress: () => {} },
     ]);
-  };
-
-  const login = async (values) => {
-    setLoader(true);
-    console.log(values);
   };
 
   return (
@@ -62,9 +62,9 @@ const Login = ({ navigation }) => {
           <Text style={styles.title}>Unlimited Luxurious Furniture</Text>
 
           <Formik
-            initialValues={{ email: "", password: "" }}
+            initialValues={{ email: "", password: "", location: "" }}
             validationSchema={validationSchema}
-            onSubmit={(values) => login(values)}
+            onSubmit={(values) => console.log(values)}
           >
             {({
               handleChange,
@@ -77,6 +77,41 @@ const Login = ({ navigation }) => {
               touched,
             }) => (
               <View>
+                {/* Username */}
+                <View style={styles.wrapper}>
+                  <Text style={styles.label}>Username</Text>
+                  <View
+                    style={styles.inputWrapper(
+                      touched.username ? COLORS.secondary : COLORS.offwhite
+                    )}
+                  >
+                    <MaterialCommunityIcons
+                      name="face-man-profile"
+                      size={20}
+                      color="grey"
+                      style={styles.iconStyle}
+                    />
+
+                    <TextInput
+                      placeholder="Enter username"
+                      onFocus={() => {
+                        setFieldTouched("username");
+                      }}
+                      onBlur={() => setFieldTouched("username", "")}
+                      autoCapitalize="none"
+                      autoCorrect={false}
+                      value={values.username}
+                      onChangeText={handleChange("username")}
+                      style={{ flex: 1 }}
+                    />
+                  </View>
+
+                  {touched.username && errors.username && (
+                    <Text style={styles.errorMessage}>{errors.username}</Text>
+                  )}
+                </View>
+
+                {/* Email */}
                 <View style={styles.wrapper}>
                   <Text style={styles.label}>Email</Text>
                   <View
@@ -110,6 +145,41 @@ const Login = ({ navigation }) => {
                   )}
                 </View>
 
+                {/* Location */}
+                <View style={styles.wrapper}>
+                  <Text style={styles.label}>Location</Text>
+                  <View
+                    style={styles.inputWrapper(
+                      touched.location ? COLORS.secondary : COLORS.offwhite
+                    )}
+                  >
+                    <Ionicons
+                      name="location-outline"
+                      size={20}
+                      color="grey"
+                      style={styles.iconStyle}
+                    />
+
+                    <TextInput
+                      placeholder="Enter Location"
+                      onFocus={() => {
+                        setFieldTouched("location");
+                      }}
+                      onBlur={() => setFieldTouched("location", "")}
+                      autoCapitalize="none"
+                      autoCorrect={false}
+                      value={values.location}
+                      onChangeText={handleChange("location")}
+                      style={{ flex: 1 }}
+                    />
+                  </View>
+
+                  {touched.location && errors.location && (
+                    <Text style={styles.errorMessage}>{errors.location}</Text>
+                  )}
+                </View>
+
+                {/* Password */}
                 <View style={styles.wrapper}>
                   <Text style={styles.label}>Password</Text>
                   <View
@@ -156,22 +226,21 @@ const Login = ({ navigation }) => {
                   )}
                 </View>
                 <Button
-                  title={"L O G I N"}
+                  title={"SIGN UP"}
                   onPress={isValid ? handleSubmit : inValidForm}
                   isValid={isValid}
-                  loader={loader}
                 />
 
                 <View style={styles.regWrapper}>
                   <Text style={styles.regQuestion}>
-                    Don't have an account yet?
+                    Already have an account?
                   </Text>
                   <TouchableOpacity
                     onPress={() => {
-                      navigation.navigate("SignUp");
+                      navigation.navigate("Login");
                     }}
                   >
-                    <Text style={styles.registration}>Register</Text>
+                    <Text style={styles.registration}>Login</Text>
                   </TouchableOpacity>
                 </View>
               </View>
@@ -183,4 +252,4 @@ const Login = ({ navigation }) => {
   );
 };
 
-export default Login;
+export default SignUp;
