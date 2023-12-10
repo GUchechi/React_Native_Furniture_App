@@ -17,10 +17,12 @@ import styles from "./Login.styles";
 import BackBtn from "../../components/BackBtn";
 import Button from "../../components/Button";
 import { COLORS } from "../../constants";
+import axios from "axios";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const validationSchema = Yup.object().shape({
   password: Yup.string()
-    .min(8, "Must be at least 8 characters or less")
+    .min(6, "Must be at least 8 characters or less")
     .required("Required"),
 
   email: Yup.string()
@@ -40,9 +42,39 @@ const Login = ({ navigation }) => {
     ]);
   };
 
+  // Login
   const login = async (values) => {
     setLoader(true);
-    console.log(values);
+
+    try {
+      const endPoint = "http://192.168.43.29:3000/api/login/";
+      const data = values;
+
+      const response = await axios.post(endPoint, data);
+
+      if (response.status === 200) {
+        setLoader(false);
+        setResponseData(response.data);
+
+        await AsyncStorage.setItem(
+          `user${responseData._id}`,
+          JSON.stringify(responseData)
+        );
+
+        await AsyncStorage.setItem("id", JSON.stringify(responseData._id));
+        navigation.replace("Bottom Navigation");
+      } else {
+        Alert.alert("Error Logging in", "Please provide all valid credentials");
+      }
+    } catch (error) {
+      // console.error("Login Error: ", error.message); // Log the actual error for debugging
+      Alert.alert(
+        "Error",
+        "Oops, Error logging in. Try again with correct credentials"
+      );
+    } finally {
+      setLoader(false); // Move setLoader(false) outside the try block
+    }
   };
 
   return (
