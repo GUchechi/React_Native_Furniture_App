@@ -96,6 +96,51 @@ const Login = ({ navigation }) => {
                     <Text style={styles.errorMessage}>{errors.email}</Text>
                   )}
                 </View>
+
+                <View style={styles.wrapper}>
+                  <Text style={styles.label}>Password</Text>
+                  <View
+                    style={styles.inputWrapper(
+                      touched.email ? "grey" : COLORS.offwhite
+                    )}
+                  >
+                    <MaterialCommunityIcons
+                      name="lock-outline"
+                      size={20}
+                      color="grey"
+                      style={styles.iconStyle}
+                    />
+
+                    <TextInput
+                      placeholder="Enter Password"
+                      onFocus={() => {
+                        setFieldTouched("password");
+                      }}
+                      onBlur={() => setFieldTouched("password", "")}
+                      autoCapitalize="none"
+                      autoCorrect={false}
+                      value={values.password}
+                      onChangeText={handleChange("password")}
+                      style={{ flex: 1 }}
+                    />
+
+                    <TouchableOpacity
+                      onPress={() => {
+                        setObsecureText(!obsecureText);
+                      }}
+                    >
+                      <MaterialCommunityIcons
+                        name={obsecureText ? "eye-outline" : "eye-off-outline"}
+                        size={18}
+                        color={"grey"}
+                      />
+                    </TouchableOpacity>
+                  </View>
+
+                  {touched.password && errors.password && (
+                    <Text style={styles.errorMessage}>{errors.password}</Text>
+                  )}
+                </View>
                 <Button title={"L O G I N"} onPress={() => {}} />
               </View>
             )}

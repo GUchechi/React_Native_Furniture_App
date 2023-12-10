@@ -13,14 +13,15 @@ const styles = StyleSheet.create({
     fontSize: SIZES.xLarge,
     color: COLORS.primary,
     textAlign: "center",
-    marginBottom: SIZES.xxLarge,
+    marginBottom: SIZES.xLarge,
   },
   wrapper: {
     marginBottom: 20,
   },
   label: {
     fontFamily: "regular",
-    fontSize: SIZES.xSmall,
+    color: "grey",
+    fontSize: 15,
     marginBottom: 5,
     marginEnd: 5,
     textAlign: "right",
